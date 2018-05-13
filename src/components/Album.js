@@ -28,6 +28,7 @@ class Album extends Component {
           </section>
           <table id="song-list">
             <colgroup>
+              <col id="song-number-column" />
               <col id="song-list" />
               <col id="song-title-column" />
               <col id="song-duration-column" />
@@ -38,15 +39,16 @@ class Album extends Component {
                 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
                   <td className="song-actions">
                     <button>
-                      <span class="song-number">{index + 1}</span>
-                      <span class="ion-play"></span>
-                      <span class="ion-pause"></span>
+                      <span className="song-number">{index + 1}</span>
+                      <span className="ion-play"></span>
+                      <span className="ion-pause"></span>
                     </button>
                   </td>
                   <td className="song-title">{song.title}</td>
                   <td className="song-duration">{song.duration}</td>
                 </tr>
-              )}
+              )
+            }
             </tbody>
           </table>
         </section>
@@ -55,7 +57,7 @@ class Album extends Component {
 
     return (
       <section className="album">
-          {albumInfo}
+        {albumInfo}
       </section>
     );
   }
