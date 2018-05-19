@@ -4,7 +4,7 @@ import albumData from './../data/albums';
 class Album extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       album: null,
       currentSong: null,
@@ -18,7 +18,6 @@ class Album extends Component {
       return album.slug === this.props.match.params.slug;
     });
 
-    console.log(album)
     if(album) {
       this.setState({
         album: album,
