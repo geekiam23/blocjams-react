@@ -63,6 +63,14 @@ class Album extends Component {
     this.play();
   }
 
+  handleNextClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    const newIndex = currentIndex + 1;
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play();
+  }
+
   render() {
     let albumInfo = null;
     if (this.state.album) {
@@ -88,7 +96,7 @@ class Album extends Component {
                 this.state.album.songs.map( (song, index) =>
                   <tr className="song" key={index} onClick={() => this.handleSongClick(song)} onMouseEnter={ () => this.setState({isHovering: index})} onMouseLeave={ () => this.setState({isHovering: false})} >
                     <td className="song-actions">
-                      { (this.state.currentSong.title === song.title) ? 
+                      { (this.state.currentSong.title === song.title) ?
                           <span className={ this.state.isPlaying ? "ion-ios-pause" : "ion-ios-play" }></span>
                           :
                           (this.state.isHovered === index+1) ?
@@ -109,6 +117,7 @@ class Album extends Component {
             currentSong={this.state.currentSong}
             handleSongClick={() => this.handleSongClick(this.state.currentSong)}
             handlePrevClick={() => this.handlePrevClick()}
+            handleNextClick={() => this.handleNextClick()}
           />
         </section>
       );
